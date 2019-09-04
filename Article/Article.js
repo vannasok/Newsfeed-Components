@@ -121,6 +121,7 @@ const data = [
 */
 //step 1 title, date, firstParagraph, secondParagraph, thirdParagraph
 const articles = document.querySelector('.articles');
+
 data.forEach(element =>{
   articles.appendChild(createCard(
       element.title, 
@@ -133,21 +134,22 @@ function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph
 
   const card = document.createElement('div');
   const cardTitle = document.createElement('h2');
-  const cardDate =document.createElement('p')
+  const cardDate =document.createElement('p');
   const cardTextOne = document.createElement('p'); 
   const cardTextTwo = document.createElement('p'); 
   const cardTextThree = document.createElement('p'); 
-  const cardSpan = document.createElement('span');
+  const cardSpan = document.createElement('button');
   
   
 
   card.appendChild(cardTitle);
   card.appendChild(cardDate);
+  card.appendChild(cardSpan);
   // card.appendChild(cardButton);
   card.appendChild(cardTextOne);
   card.appendChild(cardTextTwo);
   card.appendChild(cardTextThree);
-  card.appendChild(cardSpan);
+  
   
   
   
@@ -161,12 +163,12 @@ function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph
   cardTextOne.textContent = firstParagraph;
   cardTextTwo.textContent = secondParagraph;
   cardTextThree.textContent = thirdParagraph;
-  cardSpan.textContent = "\u2304";
+  cardSpan.textContent = "Read More";
 
   cardSpan.addEventListener('click', event =>{
     console.log('clicked', event.target);
-    card.classList.toggle('.article-open');
-    card.classList.toggle('.close');
+    card.classList.toggle('article-open');
+    card.classList.toggle('close');
   });
   return card;
 }//close function
