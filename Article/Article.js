@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Feeeeeeed !',
+    date: 'Sept 4th, 2019',
+    firstParagraph: "lorem lorem",
+    secondParagraph: 'dummy',
+    thirdParagraph: ' text',
   }
 ];
 
@@ -113,12 +120,20 @@ const data = [
 
 */
 //step 1 title, date, firstParagraph, secondParagraph, thirdParagraph
-const article = document.querySelector('.article');
+const articles = document.querySelector('.articles');
+data.map(element =>{
+  articles.appendChild(createCard(
+      element.title, 
+      element.date, 
+      element.firstParagraph,
+      element.secondParagraph, 
+      element.thirdParagraph));
+});
 function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph){
 
   const card = document.createElement('div');
   const cardTitle = document.createElement('h2');
-  const cardText =document.createElement('p')
+  const cardDate =document.createElement('date')
   const cardTextOne = document.createElement('p'); 
   const cardTextTwo = document.createElement('p'); 
   const cardTextThree = document.createElement('p'); 
@@ -128,26 +143,29 @@ function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph
   
 
   card.appendChild(cardTitle);
-  card.appendChild(cardTitle);
-  card.appendChild(cardSpan);
+  card.appendChild(cardDate);
+  card.appendChild(cardTextOne);
+  card.appendChild(cardTextTwo);
+  card.appendChild(cardTextThree);
+  card.appendChild(cardButton);
 
   card.classList.add('article');
-  cardText.classList.add('date');
-  cardButton.classList.add('expanButton');
+  card.classList.add('date');
+  card.classList.add('expanButton');
 
   cardTitle.textContent = title;
-  cardText.textContent = data;
+  cardDate.textContent = date;
   cardTextOne.textContent = firstParagraph;
   cardTextTwo.textContent = secondParagraph;
   cardTextThree.textContent = thirdParagraph;
+  cardButton.textContent = 'Read More';
 
   cardButton.addEventListener('click', event =>{
-    card.classList.toggle('article-open');
+    console.log('clicked', event.target);
+    articles.classList.toggle('.article-open');
+    articles.classList.toggle('.close');
   });
   return card;
 }//close function
 
 
-data.forEach(element =>{
-  article.appendChild(createCard(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
-});
