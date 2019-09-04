@@ -112,3 +112,42 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//step 1 title, date, firstParagraph, secondParagraph, thirdParagraph
+const article = document.querySelector('.article');
+function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph){
+
+  const card = document.createElement('div');
+  const cardTitle = document.createElement('h2');
+  const cardText =document.createElement('p')
+  const cardTextOne = document.createElement('p'); 
+  const cardTextTwo = document.createElement('p'); 
+  const cardTextThree = document.createElement('p'); 
+  const cardButton = document.createElement('span');
+  // const buttonOpen = document.createElement('button');
+  // const buttonClose = document.createElement('button');
+  
+
+  card.appendChild(cardTitle);
+  card.appendChild(cardTitle);
+  card.appendChild(cardSpan);
+
+  card.classList.add('article');
+  cardText.classList.add('date');
+  cardButton.classList.add('expanButton');
+
+  cardTitle.textContent = title;
+  cardText.textContent = data;
+  cardTextOne.textContent = firstParagraph;
+  cardTextTwo.textContent = secondParagraph;
+  cardTextThree.textContent = thirdParagraph;
+
+  cardButton.addEventListener('click', event =>{
+    card.classList.toggle('article-open');
+  });
+  return card;
+}//close function
+
+
+data.forEach(element =>{
+  article.appendChild(createCard(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+});
