@@ -137,32 +137,33 @@ function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph
   const cardTextOne = document.createElement('p'); 
   const cardTextTwo = document.createElement('p'); 
   const cardTextThree = document.createElement('p'); 
-  const cardButton = document.createElement('button');
-  // const buttonOpen = document.createElement('button');
-  // const buttonClose = document.createElement('button');
+  const cardSpan = document.createElement('span');
+  
   
 
   card.appendChild(cardTitle);
   card.appendChild(cardDate);
-  card.appendChild(cardButton);
+  // card.appendChild(cardButton);
   card.appendChild(cardTextOne);
   card.appendChild(cardTextTwo);
   card.appendChild(cardTextThree);
+  card.appendChild(cardSpan);
+  
   
   
 
   card.classList.add('article');
   cardDate.classList.add('date');
-  cardButton.classList.add('expanButton');
+  cardSpan.classList.add('expanButton');
 
   cardTitle.textContent = title;
   cardDate.textContent = date;
   cardTextOne.textContent = firstParagraph;
   cardTextTwo.textContent = secondParagraph;
   cardTextThree.textContent = thirdParagraph;
-  cardButton.textContent = 'Read More';
+  cardSpan.textContent = "\u2304";
 
-  cardButton.addEventListener('click', event =>{
+  cardSpan.addEventListener('click', event =>{
     console.log('clicked', event.target);
     card.classList.toggle('.article-open');
     card.classList.toggle('.close');
