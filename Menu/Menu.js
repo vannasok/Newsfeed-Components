@@ -33,7 +33,7 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
-const menuBar = document.querySelector('.menu');
+const menuBar = document.querySelector('.header');
 
 function menuSection (menuItems) {
   const menu = document.createElement('div');
