@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Feeeeeeed !',
+    date: 'Sept 4th, 2019',
+    firstParagraph: "lorem lorem",
+    secondParagraph: 'dummy',
+    thirdParagraph: ' text',
   }
 ];
 
@@ -112,3 +119,58 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//step 1 title, date, firstParagraph, secondParagraph, thirdParagraph
+const articles = document.querySelector('.articles');
+
+data.forEach(element =>{
+  articles.appendChild(createCard(
+      element.title, 
+      element.date, 
+      element.firstParagraph,
+      element.secondParagraph, 
+      element.thirdParagraph));
+});
+function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph){
+
+  const card = document.createElement('div');
+  const cardTitle = document.createElement('h2');
+  const cardDate =document.createElement('p');
+  const cardTextOne = document.createElement('p'); 
+  const cardTextTwo = document.createElement('p'); 
+  const cardTextThree = document.createElement('p'); 
+  const cardSpan = document.createElement('button');
+  
+  
+
+  card.appendChild(cardTitle);
+  card.appendChild(cardDate);
+  card.appendChild(cardSpan);
+  // card.appendChild(cardButton);
+  card.appendChild(cardTextOne);
+  card.appendChild(cardTextTwo);
+  card.appendChild(cardTextThree);
+  
+  
+  
+  
+
+  card.classList.add('article');
+  cardDate.classList.add('date');
+  cardSpan.classList.add('expanButton');
+
+  cardTitle.textContent = title;
+  cardDate.textContent = date;
+  cardTextOne.textContent = firstParagraph;
+  cardTextTwo.textContent = secondParagraph;
+  cardTextThree.textContent = thirdParagraph;
+  cardSpan.textContent = "Read More";
+
+  cardSpan.addEventListener('click', event =>{
+    console.log('clicked', event.target);
+    card.classList.toggle('article-open');
+    card.classList.toggle('close');
+  });
+  return card;
+}//close function
+
+
